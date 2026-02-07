@@ -10,159 +10,189 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            background: linear-gradient(135deg, #5d50c6 0%, #3d348b 100%); 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #fff;
+            padding: 20px 0;
+            color: white;
             overflow-x: hidden;
         }
 
-        /* --- ইমেজ স্লাইডার সেকশন --- */
-        .slider-container {
+        .container {
             width: 90%;
-            max-width: 500px;
-            height: 200px;
-            margin-top: 20px;
-            position: relative;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* ইমেজ স্লাইডার স্টাইল */
+        .image-slider {
+            width: 100%;
+            height: 180px;
+            border-radius: 25px;
             overflow: hidden;
-            border-radius: 30px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            margin-bottom: 25px;
         }
 
-        .slides {
+        .slider-track {
             display: flex;
-            width: 500%; /* ৫টি ছবির জন্য */
+            width: 500%;
             height: 100%;
-            transition: transform 1s ease-in-out; /* অ্যানিমেশন স্পিড */
+            animation: slideAnimation 20s infinite ease-in-out;
         }
 
-        .slides img {
-            width: 20%; /* ১০০ / ৫ = ২০ */
+        .slider-track img {
+            width: 20%;
             height: 100%;
             object-fit: cover;
         }
 
-        h2 { margin: 20px 0 10px; font-size: 26px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
-
-        /* --- বাটন সেকশন --- */
-        .btn-list { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 15px; padding: 10px; flex-grow: 1; }
-        
-        .nav-card {
-            width: 90%; max-width: 360px; padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px; font-size: 18px; font-weight: 600;
-            color: #fff; cursor: pointer; transition: 0.3s;
-            display: flex; justify-content: space-between; align-items: center;
+        @keyframes slideAnimation {
+            0%, 15% { transform: translateX(0%); }
+            20%, 35% { transform: translateX(-20%); }
+            40%, 55% { transform: translateX(-40%); }
+            60%, 75% { transform: translateX(-60%); }
+            80%, 95% { transform: translateX(-80%); }
+            100% { transform: translateX(0%); }
         }
-        .nav-card:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.02); }
 
-        /* --- ফুটার (ডেভেলপার নাম) --- */
+        h2 { font-size: 26px; margin-bottom: 25px; font-weight: 700; }
+
+        /* বাটন লিস্ট */
+        .btn-list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+
+        .btn-item {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            padding: 20px 25px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn-item:hover { 
+            background: rgba(255, 255, 255, 0.22); 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ডেভেলপার নাম এনিমেশন - এবার নাম কাটবে না */
+        .footer-dev-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
         .footer-dev {
-            padding: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            opacity: 0.9;
+            font-size: 15px;
+            color: #fff;
+            font-weight: 600;
+            overflow: hidden;
+            border-right: 3px solid #fff;
+            white-space: nowrap;
+            width: 0;
+            animation: typing 6s steps(35, end) infinite;
+        }
+
+        @keyframes typing {
+            0% { width: 0 }
+            45%, 65% { width: 100% } /* ১০০% উইডথ দেওয়া হয়েছে যাতে পূর্ণ নাম আসে */
+            100% { width: 0 }
         }
     </style>
 </head>
 <body>
 
-    <div class="slider-container">
-        <div class="slides" id="slideBox">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600" alt="Img 1">
-            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600" alt="Img 2">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600" alt="Img 3">
-            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600" alt="Img 4">
-            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600" alt="Img 5">
+    <div class="container">
+        
+        <div class="image-slider">
+            <div class="slider-track">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500">
+                <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=500">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500">
+            </div>
+        </div>
+
+        <h2>Exclusive Sections</h2>
+
+        <div class="btn-list">
+            <div class="btn-item" onclick="checkPass('page1.html', 'pass1')">🚀 Section One <span>+</span></div>
+            <div class="btn-item" onclick="checkPass('page2.html', 'pass2')">🔥 Section Two <span>+</span></div>
+            <div class="btn-item" onclick="checkPass('page3.html', 'pass3')">💎 Section Three <span>+</span></div>
+            <div class="btn-item" onclick="checkPass('page4.html', 'pass4')">⭐ Section Four <span>+</span></div>
+            <div class="btn-item" onclick="checkPass('page5.html', 'pass5')">⚡ Section Five <span>+</span></div>
+        </div>
+
+        <div class="image-slider">
+            <div class="slider-track">
+                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500">
+                <img src="https://images.unsplash.com/photo-1433086566006-068696130c8a?w=500">
+                <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500">
+                <img src="https://images.unsplash.com/photo-1510784722466-f2aa9c52fed6?w=500">
+                <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=500">
+            </div>
+        </div>
+
+        <div class="footer-dev-container">
+            <div class="footer-dev">💻Developed by: Emon Kumar</div>
         </div>
     </div>
-
-    <h2>Exclusive Sections</h2>
-
-    <div class="btn-list">
-        <div class="nav-card" onclick="askPassword('page1.html', '1111', 'Section One')">
-            <span>🚀 Section One</span> <span>+</span>
-        </div>
-        <div class="nav-card" onclick="askPassword('page2.html', '2222', 'Section Two')">
-            <span>🔥 Section Two</span> <span>+</span>
-        </div>
-        <div class="nav-card" onclick="askPassword('page3.html', '3333', 'Section Three')">
-            <span>💎 Section Three</span> <span>+</span>
-        </div>
-        <div class="nav-card" onclick="askPassword('page4.html', '4444', 'Section Four')">
-            <span>🌟 Section Four</span> <span>+</span>
-        </div>
-        <div class="nav-card" onclick="askPassword('page5.html', '5555', 'Section Five')">
-            <span>⚡ Section Five</span> <span>+</span>
-        </div>
-    </div>
-
-    <div class="footer-dev">
-       💻Developed by: <b>𝗘𝗺𝗼𝗻 𝗞𝘂𝗺𝗮𝗿</b>
-    </div>
-
-    <audio id="successSound" src="https://www.myinstants.com/media/sounds/success-fanfare-trumpets.mp3"></audio>
 
     <script>
-        // --- স্লাইডার লজিক ---
-        let counter = 0;
-        const slideBox = document.getElementById('slideBox');
-        
-        setInterval(() => {
-            counter++;
-            if(counter > 4) counter = 0; // ৫টি ছবি শেষ হলে আবার শুরুতে
-            slideBox.style.transform = `translateX(${-counter * 20}%)`;
-        }, 4000); // ৪ সেকেন্ড পর পর পরিবর্তন
+        // প্রতিটি পেজের জন্য আলাদা পাসওয়ার্ড এখানে সেট করুন
+        const passwords = {
+            'page1.html': '1111', // সেকশন ১ এর পাসওয়ার্ড
+            'page2.html': '2222', // সেকশন ২ এর পাসওয়ার্ড
+            'page3.html': '3333', // সেকশন ৩ এর পাসওয়ার্ড
+            'page4.html': '4444', // সেকশন ৪ এর পাসওয়ার্ড
+            'page5.html': '5555'  // সেকশন ৫ এর পাসওয়ার্ড
+        };
 
-        // --- পাসওয়ার্ড লজিক ---
-        async function askPassword(url, correctPass, title) {
-            const { value: password } = await Swal.fire({
-                title: title,
+        function checkPass(pageUrl) {
+            Swal.fire({
+                title: 'Enter Section Password',
                 input: 'password',
-                inputLabel: 'Developed by: আপনার নাম এখানে',
-                inputPlaceholder: 'গোপন পাসওয়ার্ড দিন',
+                inputPlaceholder: 'Type password here...',
                 showCancelButton: true,
-                confirmButtonColor: '#764ba2',
-                cancelButtonColor: '#ff4757',
                 confirmButtonText: 'Unlock',
-                background: '#fff',
-                customClass: { popup: 'my-rounded-popup' }
-            });
+                confirmButtonColor: '#5d50c6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const userPass = result.value;
+                    const correctPass = passwords[pageUrl];
 
-            if (password) {
-                if (password === correctPass) {
-                    document.getElementById('successSound').play();
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Access Granted!',
-                        text: 'পাসওয়ার্ড সঠিক হয়েছে',
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then(() => {
-                        window.location.href = url;
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error!',
-                        text: 'ভুল পাসওয়ার্ড!',
-                        confirmButtonColor: '#764ba2'
-                    });
+                    if (userPass === correctPass) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Access Granted!',
+                            timer: 1000,
+                            showConfirmButton: false
+                        }).then(() => {
+                            window.location.href = pageUrl;
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Access Denied!',
+                            text: 'ভুল পাসওয়ার্ড, আবার চেষ্টা করুন।',
+                            confirmButtonColor: '#5d50c6'
+                        });
+                    }
                 }
-            }
+            })
         }
     </script>
-
-    <style>
-        .my-rounded-popup { border-radius: 30px !important; }
-        .swal2-input { text-align: center !important; border-radius: 15px !important; }
-    </style>
-
 </body>
 </html>

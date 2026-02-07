@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 1 - Full Screen View</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            /* প্রিমিয়াম গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            min-height: 100vh;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ব্যাক বাটন (গ্লাস ইফেক্ট) */
+        .back-btn { 
+            align-self: flex-start;
+            display: inline-block; 
+            padding: 10px 25px; 
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: #fff; 
+            text-decoration: none; 
+            border-radius: 15px; 
+            margin-bottom: 25px; 
+            font-weight: bold; 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: rgba(255, 255, 255, 0.4); }
+
+        /* ভিডিও কার্ড ডিজাইন */
+        .video-card { 
+            width: 100%;
+            max-width: 550px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3); 
+            margin-bottom: 35px; 
+        }
+        
+        /* টাইপিং অ্যানিমেশন */
+        .typing-text { 
+            font-size: 16px; 
+            font-weight: 600; 
+            color: #ff4757; 
+            border-right: 3px solid #ff4757; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            width: 0; 
+            margin-bottom: 12px;
+            animation: typing 3.5s steps(40, end) infinite; 
+        }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+
+        /* ভিডিও ফ্রেম - ল্যান্ডস্কেপ ও ফুল স্ক্রিন সাপোর্ট */
+        .video-frame { 
+            width: 100%; 
+            aspect-ratio: 16/9; 
+            border-radius: 18px; 
+            border: none; 
+            background: #000;
+            display: block;
+        }
+
+        /* ডেভেলপার নাম (ফুটার) */
+        .footer-dev {
+            margin-top: auto;
+            padding: 20px 0;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-align: center;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="home.html" class="back-btn">← Back to Menu</a>
+
+    <div class="video-card">
+        <div class="typing-text">১. ভিডিওর নাম এখানে লিখুন...</div>
+        <iframe class="video-frame" src="YOUR_VIDEO_URL_1" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+        <div class="typing-text">২. ভিডিওর নাম এখানে লিখুন...</div>
+        <iframe class="video-frame" src="YOUR_VIDEO_URL_2" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+        <div class="typing-text">৩. ভিডিওর নাম এখানে লিখুন...</div>
+        <iframe class="video-frame" src="YOUR_VIDEO_URL_3" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+        <div class="typing-text">৪. ভিডিওর নাম এখানে লিখুন...</div>
+        <iframe class="video-frame" src="YOUR_VIDEO_URL_4" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+        <div class="typing-text">৫. ভিডিওর নাম এখানে লিখুন...</div>
+        <iframe class="video-frame" src="YOUR_VIDEO_URL_5" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+        <div class="typing-text">৬. ভিডিওর নাম এখানে লিখুন...</div>
+        <iframe class="video-frame" src="YOUR_VIDEO_URL_6" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+        <div class="typing-text">৭. ভিডিওর নাম এখানে লিখুন...</div>
+        <iframe class="video-frame" src="YOUR_VIDEO_URL_7" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+        <div class="typing-text">৮. ভিডিওর নাম এখানে লিখুন...</div>
+        <iframe class="video-frame" src="YOUR_VIDEO_URL_8" allowfullscreen></iframe>
+    </div>
+
+    <div class="footer-dev">
+       💻Developed by: <b>𝗘𝗺𝗼𝗻 𝗞𝘂𝗺𝗮𝗿</b>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Little Drop</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background: linear-gradient(135deg, #5d50c6 0%, #3d348b 100%); 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container { 
+            background: #fff; 
+            width: 90%; 
+            max-width: 360px; 
+            padding: 35px 25px; 
+            border-radius: 40px; 
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .top-img { width: 140px; display: block; margin: 0 auto 10px; }
+
+        h2 { color: #222; font-size: 28px; margin-bottom: 25px; font-weight: 700; text-align: left; padding-left: 5px; }
+
+        .input-group { margin-bottom: 18px; text-align: left; }
+        
+        label { display: block; font-size: 13px; color: #888; margin: 0 0 6px 10px; }
+
+        input { 
+            width: 100%; 
+            padding: 14px 20px; 
+            border-radius: 18px; 
+            border: 1px solid #f0f0f0; 
+            background: #f9f9fb; 
+            outline: none; 
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: #5d50c6; background: #fff; }
+
+        .footer-flex { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-top: 30px; 
+        }
+
+        .footer-flex a { color: #5d50c6; font-weight: 600; text-decoration: none; font-size: 14px; }
+
+        .btn-login { 
+            background: #5d50c6; 
+            color: white; 
+            padding: 12px 35px; 
+            border-radius: 15px; 
+            border: none; 
+            font-weight: 600; 
+            cursor: pointer; 
+            box-shadow: 0 5px 15px rgba(93, 80, 198, 0.3);
+        }
+
+        /* ডেভেলপার নাম অ্যানিমেশন */
+        .footer-dev {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #5d50c6;
+            font-weight: 500;
+            overflow: hidden;
+            border-right: 2px solid #5d50c6;
+            white-space: nowrap;
+            margin-left: auto;
+            margin-right: auto;
+            width: 0;
+            animation: typing 4s steps(30, end) infinite;
+        }
+
+        @keyframes typing {
+            0% { width: 0 }
+            50% { width: 70% }
+            100% { width: 0 }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-4437045-3723230.png" class="top-img">
+
+        <h2>Login</h2>
+
+        <div class="input-group">
+            <label>Phone Number</label>
+            <input type="number" id="phone" placeholder="Enter phone">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="••••••••">
+        </div>
+
+        <div class="footer-flex">
+            <a href="signup.html">Create Account</a>
+            <button class="btn-login" id="loginBtn">Login</button>
+        </div>
+
+        <div class="footer-dev">
+            💻Developed by: 𝗘𝗺𝗼𝗻 𝗞𝘂𝗺𝗮𝗿
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwi8f1fmn3nkh3mKVbP_S7FzNB7Ug8A3GUYIHb82MabiM84HYeqCcC6uDXercjQ-RsoEA/exec'; // এখানে আপনার গুগল স্ক্রিপ্ট লিঙ্কটি বসান
+
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+
+            if(!phone || !password) {
+                Swal.fire('Error!', 'সবগুলো ঘর পূরণ করুন।', 'warning');
+                return;
+            }
+
+            document.getElementById('loginBtn').innerText = "Checking...";
+
+            try {
+                // গুগল শিট থেকে ডাটা চেক করার জন্য রিকোয়েস্ট
+                const response = await fetch(`${scriptURL}?phone=${phone}&password=${password}`);
+                const result = await response.json();
+
+                if (result.status === "success") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Welcome Back!',
+                        text: 'লগইন সফল হয়েছে।',
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "home.html"; // হোম পেজে নিয়ে যাবে
+                    });
+                } else {
+                    Swal.fire('Error!', 'ভুল ফোন নম্বর বা পাসওয়ার্ড।', 'error');
+                    document.getElementById('loginBtn').innerText = "Login";
+                }
+            } catch (error) {
+                console.error('Error!', error.message);
+                Swal.fire('Error!', 'সার্ভারে সমস্যা হচ্ছে। পরে চেষ্টা করুন।', 'error');
+                document.getElementById('loginBtn').innerText = "Login";
+            }
+        });
+    </script>
+
+</body>
+</html>

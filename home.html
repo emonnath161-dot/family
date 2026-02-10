@@ -18,7 +18,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 15px 0;
             overflow-x: hidden;
         }
 
@@ -28,23 +28,23 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* স্লাইডার কন্টেইনার স্টাইল */
+        /* থাম্বনেল সাইজ স্লাইডার (16:9 Aspect Ratio) */
         .slider-wrapper {
-            width: 90%;
+            width: 92%;
             max-width: 500px;
-            height: 130px; /* ল্যান্ডস্কেপ শেপ */
+            aspect-ratio: 16 / 9; /* থাম্বনেল সাইজ নিশ্চিত করবে */
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 4px solid rgba(255,255,255,0.4);
         }
 
         .slider-content {
             display: flex;
-            width: 500%; /* ৫টি ছবির জন্য */
+            width: 500%;
             height: 100%;
-            transition: transform 0.8s ease-in-out;
+            transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
         }
 
         .slider-content img {
@@ -53,39 +53,62 @@
             object-fit: cover;
         }
 
-        /* মাঝখানের মেইন বাটন কার্ড */
+        /* মেইন কার্ড */
         .main-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(15px);
             width: 90%;
             max-width: 450px;
             padding: 25px 20px;
-            border-radius: 30px;
+            border-radius: 35px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin: 15px 0;
         }
 
-        h1 { color: #2d3436; font-size: 20px; font-weight: 700; margin-bottom: 5px; }
-        .sub-text { color: #636e72; font-size: 13px; margin-bottom: 20px; }
+        h1 { color: #2d3436; font-size: 22px; font-weight: 700; margin-bottom: 5px; }
+        .sub-text { color: #636e72; font-size: 14px; margin-bottom: 20px; }
 
-        .btn-list { display: flex; flex-direction: column; gap: 10px; }
+        .btn-list { display: flex; flex-direction: column; gap: 12px; }
 
         .section-btn {
             background: #3d348b;
             color: white;
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             transition: 0.3s;
-            display: block;
+            border: none;
+            box-shadow: 0 5px 15px rgba(61, 52, 139, 0.2);
         }
 
-        .section-btn:active { transform: scale(0.95); }
+        .section-btn:hover { background: #2d266d; transform: translateY(-2px); }
 
-        /* সিকিউরিটি ব্লার */
+        /* পাসওয়ার্ড বক্স স্টাইল */
+        .password-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+
+        .pass-box {
+            background: white; padding: 30px; border-radius: 25px;
+            width: 85%; max-width: 320px; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .pass-box h3 { margin-bottom: 15px; color: #3d348b; }
+        .pass-box input {
+            width: 100%; padding: 12px; border: 2px solid #eee;
+            border-radius: 10px; margin-bottom: 20px; text-align: center; font-size: 18px;
+        }
+        .pass-box button {
+            background: #ff4757; color: white; border: none;
+            padding: 10px 25px; border-radius: 10px; font-weight: 700; cursor: pointer;
+        }
+
         body.blur-content { filter: blur(30px); }
     </style>
 </head>
@@ -93,65 +116,83 @@
 
     <div class="slider-wrapper">
         <div class="slider-content" id="topSlider">
-            <img src="top1.jpg" alt="Top 1">
-            <img src="top2.jpg" alt="Top 2">
-            <img src="top3.jpg" alt="Top 3">
-            <img src="top4.jpg" alt="Top 4">
-            <img src="top5.jpg" alt="Top 5">
+            <img src="top1.jpg" alt="1"><img src="top2.jpg" alt="2">
+            <img src="top3.jpg" alt="3"><img src="top4.jpg" alt="4">
+            <img src="top5.jpg" alt="5">
         </div>
     </div>
 
     <div class="main-card">
-        <h1>Little Drop Video Sections</h1>
-        <p class="sub-text">Select a section to watch videos</p>
+        <h1>Little Drop Videos</h1>
+        <p class="sub-text">পাসওয়ার্ড দিয়ে সেকশনে প্রবেশ করুন</p>
 
         <div class="btn-list">
-            <a href="page1.html" class="section-btn">Section 1: Videos 1-8</a>
-            <a href="page2.html" class="section-btn">Section 2: Videos 9-16</a>
-            <a href="page3.html" class="section-btn">Section 3: Videos 17-24</a>
-            <a href="page4.html" class="section-btn">Section 4: Videos 25-32</a>
-            <a href="page5.html" class="section-btn">Section 5: Videos 33-40</a>
+            <button class="section-btn" onclick="askPass('page1.html', '1122')">Section 1: Videos 1-8</button>
+            <button class="section-btn" onclick="askPass('page2.html', '3344')">Section 2: Videos 9-16</button>
+            <button class="section-btn" onclick="askPass('page3.html', '5566')">Section 3: Videos 17-24</button>
+            <button class="section-btn" onclick="askPass('page4.html', '7788')">Section 4: Videos 25-32</button>
+            <button class="section-btn" onclick="askPass('page5.html', '9900')">Section 5: Videos 33-40</button>
         </div>
     </div>
 
     <div class="slider-wrapper">
         <div class="slider-content" id="bottomSlider">
-            <img src="bot1.jpg" alt="Bottom 1">
-            <img src="bot2.jpg" alt="Bottom 2">
-            <img src="bot3.jpg" alt="Bottom 3">
-            <img src="bot4.jpg" alt="Bottom 4">
-            <img src="bot5.jpg" alt="Bottom 5">
+            <img src="bot1.jpg" alt="1"><img src="bot2.jpg" alt="2">
+            <img src="bot3.jpg" alt="3"><img src="bot4.jpg" alt="4">
+            <img src="bot5.jpg" alt="5">
+        </div>
+    </div>
+
+    <div class="password-overlay" id="passOverlay">
+        <div class="pass-box">
+            <h3>Enter Password</h3>
+            <input type="password" id="passInput" placeholder="****">
+            <br>
+            <button onclick="checkPass()">Submit</button>
+            <button style="background:#ccc; margin-left:10px;" onclick="closePass()">Cancel</button>
         </div>
     </div>
 
     <script>
-        // স্লাইডার এনিমেশন লজিক (৪ সেকেন্ড পর পর)
+        // স্লাইডার কন্ট্রোল
         let currentIndex = 0;
-        const totalSlides = 5;
-        const topSlider = document.getElementById('topSlider');
-        const bottomSlider = document.getElementById('bottomSlider');
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % 5;
+            const offset = currentIndex * -20;
+            document.getElementById('topSlider').style.transform = `translateX(${offset}%)`;
+            document.getElementById('bottomSlider').style.transform = `translateX(${offset}%)`;
+        }, 4000);
 
-        function startSliders() {
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                const offset = currentIndex * -20; // প্রতি ইমেজের জন্য ২০% অফসেট (১০০/৫)
-                
-                topSlider.style.transform = `translateX(${offset}%)`;
-                bottomSlider.style.transform = `translateX(${offset}%)`;
-            }, 4000); // ৪০০০ মিলি-সেকেন্ড = ৪ সেকেন্ড
+        // পাসওয়ার্ড প্রোটেকশন লজিক
+        let targetPage = "";
+        let correctPass = "";
+
+        function askPass(page, pass) {
+            targetPage = page;
+            correctPass = pass;
+            document.getElementById('passOverlay').style.display = 'flex';
+            document.getElementById('passInput').value = '';
+            document.getElementById('passInput').focus();
         }
 
-        window.onload = startSliders;
+        function closePass() {
+            document.getElementById('passOverlay').style.display = 'none';
+        }
 
-        // সিকিউরিটি: অন্য ট্যাবে গেলে ব্লার হবে
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                document.body.classList.add("blur-content");
+        function checkPass() {
+            const input = document.getElementById('passInput').value;
+            if (input === correctPass) {
+                window.location.href = targetPage;
             } else {
-                document.body.classList.remove("blur-content");
+                alert("ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।");
+                document.getElementById('passInput').value = '';
             }
+        }
+
+        // সিকিউরিটি ব্লার
+        document.addEventListener("visibilitychange", () => {
+            document.body.classList.toggle("blur-content", document.hidden);
         });
     </script>
-
 </body>
 </html>

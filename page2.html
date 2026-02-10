@@ -3,120 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section 1 - Full Screen View</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Section 1 - Videos 1-8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
-        body { 
-            /* প্রিমিয়াম গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+
+        /* হোম পেজের মতো রেনবো ব্যাকগ্রাউন্ড */
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ffbe0b, #fb5607);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
             min-height: 100vh;
-            padding: 20px 15px;
+            padding: 20px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* ব্যাক বাটন (গ্লাস ইফেক্ট) */
-        .back-btn { 
-            align-self: flex-start;
-            display: inline-block; 
-            padding: 10px 25px; 
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            color: #fff; 
-            text-decoration: none; 
-            border-radius: 15px; 
-            margin-bottom: 25px; 
-            font-weight: bold; 
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: 0.3s;
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .back-btn:hover { background: rgba(255, 255, 255, 0.4); }
 
-        /* ভিডিও কার্ড ডিজাইন */
-        .video-card { 
+        .header {
             width: 100%;
-            max-width: 550px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px; 
-            border-radius: 25px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3); 
-            margin-bottom: 35px; 
-        }
-        
-        /* টাইপিং অ্যানিমেশন */
-        .typing-text { 
-            font-size: 16px; 
-            font-weight: 600; 
-            color: #ff4757; 
-            border-right: 3px solid #ff4757; 
-            white-space: nowrap; 
-            overflow: hidden; 
-            width: 0; 
-            margin-bottom: 12px;
-            animation: typing 3.5s steps(40, end) infinite; 
-        }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-
-        /* ভিডিও ফ্রেম - ল্যান্ডস্কেপ ও ফুল স্ক্রিন সাপোর্ট */
-        .video-frame { 
-            width: 100%; 
-            aspect-ratio: 16/9; 
-            border-radius: 18px; 
-            border: none; 
-            background: #000;
-            display: block;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* ডেভেলপার নাম (ফুটার) */
-        .footer-dev {
-            margin-top: auto;
-            padding: 20px 0;
-            color: #fff;
+        .back-btn {
+            text-decoration: none;
+            color: white;
+            background: #3d348b;
+            padding: 8px 15px;
+            border-radius: 10px;
             font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-align: center;
-            opacity: 0.9;
+            font-weight: 600;
         }
+
+        /* ভিডিও কার্ড স্টাইল */
+        .video-card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .video-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 12px;
+            border-left: 4px solid #3d348b;
+            padding-left: 10px;
+        }
+
+        /* ভিডিও কন্টেইনার (কোনো জুম হবে না) */
+        .video-box {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Ratio */
+            height: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* ফুল স্ক্রিন বাটন */
+        .fs-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        body.blur-content { filter: blur(30px); }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
-    <a href="home.html" class="back-btn">← Back to Menu</a>
-
-    <div class="video-card">
-        <div class="typing-text">১. ভিডিওর নাম এখানে লিখুন...</div>
-        <iframe class="video-frame" src="YOUR_VIDEO_URL_1" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen></iframe>
+    <div class="header">
+        <h2 style="font-size: 18px; color: #3d348b;">Section 1</h2>
+        <a href="home.html" class="back-btn">← Back Home</a>
     </div>
 
     <div class="video-card">
-        <div class="typing-text">২. ভিডিওর নাম এখানে লিখুন...</div>
-        <iframe class="video-frame" src="YOUR_VIDEO_URL_2" allowfullscreen></iframe>
+        <div class="video-title">১. ভিডিওর নাম এখানে লিখুন</div>
+        <div class="video-box" id="v1">
+            <iframe src="YOUR_DRIVE_LINK_1/preview"></iframe>
+        </div>
+        <button class="fs-btn" onclick="openLandscape('v1')">📺 WATCH FULL SCREEN</button>
     </div>
 
     <div class="video-card">
-        <div class="typing-text">৩. ভিডিওর নাম এখানে লিখুন...</div>
-        <iframe class="video-frame" src="YOUR_VIDEO_URL_3" allowfullscreen></iframe>
+        <div class="video-title">২. ভিডিওর নাম এখানে লিখুন</div>
+        <div class="video-box" id="v2">
+            <iframe src="YOUR_DRIVE_LINK_2/preview"></iframe>
+        </div>
+        <button class="fs-btn" onclick="openLandscape('v2')">📺 WATCH FULL SCREEN</button>
     </div>
 
-    <div class="video-card">
-        <div class="typing-text">৪. ভিডিওর নাম এখানে লিখুন...</div>
-        <iframe class="video-frame" src="YOUR_VIDEO_URL_4" allowfullscreen></iframe>
-    </div>
+    <script>
+        // ল্যান্ডস্কেপ ফুলস্ক্রিন ফাংশন
+        function openLandscape(elementId) {
+            var elem = document.getElementById(elementId);
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+            
+            // অটো ল্যান্ডস্কেপ করার চেষ্টা (মোবাইলে)
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch(function(error) {
+                    console.log("Orientation lock failed: " + error);
+                });
+            }
+        }
 
-    <div class="video-card">
-        <div class="typing-text">৫. ভিডিওর নাম এখানে লিখুন...</div>
-        <iframe class="video-frame" src="YOUR_VIDEO_URL_5" allowfullscreen></iframe>
-    </div>
-
-    <div class="footer-dev">
-       💻Developed by: <b>𝗘𝗺𝗼𝗻 𝗞𝘂𝗺𝗮𝗿</b>
-    </div>
-
+        // সিকিউরিটি ব্লার
+        document.addEventListener("visibilitychange", () => {
+            document.body.classList.toggle("blur-content", document.hidden);
+        });
+    </script>
 </body>
 </html>

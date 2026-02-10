@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section 1 - Videos 1-8</title>
+    <title>Hossain's wedding ceremony with Nasrin Akhter Chumki</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-        /* হোম পেজের মতো রেনবো ব্যাকগ্রাউন্ড */
         body {
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ffbe0b, #fb5607);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             min-height: 100vh;
-            padding: 20px 10px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -26,151 +25,151 @@
             100% { background-position: 0% 50%; }
         }
 
-        .header {
+        .header-bar {
             width: 100%;
             max-width: 600px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
             background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
+            padding: 12px 20px;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
 
         .back-btn {
             text-decoration: none;
-            color: white;
             background: #3d348b;
+            color: #fff;
             padding: 8px 15px;
             border-radius: 10px;
-            font-size: 14px;
             font-weight: 600;
+            font-size: 14px;
         }
 
-        /* ভিডিও কার্ড স্টাইল */
         .video-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: #fff;
             width: 100%;
             max-width: 600px;
+            border-radius: 25px;
             padding: 15px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
-        .video-title {
-            font-size: 16px;
+        .video-label {
             font-weight: 700;
+            font-size: 17px;
             color: #2d3436;
             margin-bottom: 12px;
-            border-left: 4px solid #3d348b;
+            display: block;
+            border-left: 5px solid #3d348b;
             padding-left: 10px;
         }
 
-        /* ভিডিও কন্টেইনার (কোনো জুম হবে না) */
-        .video-box {
+        /* ভিডিও কন্টেইনার ফিক্স - যা ওপর থেকে কাটা রোধ করবে */
+        .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Ratio */
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
-            border-radius: 15px;
             overflow: hidden;
+            border-radius: 15px;
             background: #000;
         }
 
-        iframe {
+        .video-container iframe {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
-        /* ফুল স্ক্রিন বাটন */
-        .fs-btn {
+        .fullscreen-btn {
             background: #ff4757;
-            color: white;
+            color: #fff;
             border: none;
             width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            cursor: pointer;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 15px;
             font-weight: 700;
-            font-size: 14px;
-            margin-top: 12px;
+            cursor: pointer;
+            font-size: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+            gap: 10px;
         }
 
-        body.blur-content { filter: blur(30px); }
+        body.blur-mode { filter: blur(25px); }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-    <div class="header">
-        <h2 style="font-size: 18px; color: #3d348b;">Section 1</h2>
+    <div class="header-bar">
+        <h2 style="color: #3d348b;">Section 1</h2>
         <a href="home.html" class="back-btn">← Back Home</a>
     </div>
 
     <div class="video-card">
-        <div class="video-title">১. ভিডিওর নাম এখানে লিখুন</div>
-        <div class="video-box" id="v1">
-            <iframe src="YOUR_DRIVE_LINK_1/preview"></iframe>
+        <span class="video-label">Show 01</span>
+        <div class="video-container" id="vid1">
+            <iframe 
+                src="https://drive.google.com/file/d/1IdfCXiihEo67Pr2HCp8f5QUi1pMt0UYK/preview" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
         </div>
-        <button class="fs-btn" onclick="openLandscape('v1')">📺 WATCH FULL SCREEN</button>
+        <button class="fullscreen-btn" onclick="goFull('vid1')">📺 WATCH FULL SCREEN</button>
     </div>
 
     <div class="video-card">
-        <div class="video-title">২. ভিডিওর নাম এখানে লিখুন</div>
-        <div class="video-box" id="v2">
-            <iframe src="YOUR_DRIVE_LINK_2/preview"></iframe>
+        <span class="video-label">Show 02</span>
+        <div class="video-container" id="vid2">
+            <iframe src="https://drive.google.com/file/d/1kwghUUeffkScspKOJi-xz0ppIUZ5e38P/preview" allowfullscreen></iframe>
         </div>
-        <button class="fs-btn" onclick="openLandscape('v2')">📺 WATCH FULL SCREEN</button>
+        <button class="fullscreen-btn" onclick="goFull('vid2')">📺 WATCH FULL SCREEN</button>
     </div>
 
     <div class="video-card">
-        <div class="video-title">৩. ভিডিওর নাম এখানে লিখুন</div>
-        <div class="video-box" id="v1">
-            <iframe src="YOUR_DRIVE_LINK_1/preview"></iframe>
+        <span class="video-label">Show 03</span>
+        <div class="video-container" id="vid2">
+            <iframe src="https://drive.google.com/file/d/1-tCq46Yl6qtkAqRCWBvZtTe15A78Pnmr/preview" allowfullscreen></iframe>
         </div>
-        <button class="fs-btn" onclick="openLandscape('v1')">📺 WATCH FULL SCREEN</button>
+        <button class="fullscreen-btn" onclick="goFull('vid2')">📺 WATCH FULL SCREEN</button>
     </div>
 
     <div class="video-card">
-        <div class="video-title">৪. ভিডিওর নাম এখানে লিখুন</div>
-        <div class="video-box" id="v1">
-            <iframe src="YOUR_DRIVE_LINK_1/preview"></iframe>
+        <span class="video-label">Show 04</span>
+        <div class="video-container" id="vid2">
+            <iframe src="https://drive.google.com/file/d/1Q0GaeU4KfpGPNOL4H6TKNqSOy0j3aM5G/preview" allowfullscreen></iframe>
         </div>
-        <button class="fs-btn" onclick="openLandscape('v1')">📺 WATCH FULL SCREEN</button>
+        <button class="fullscreen-btn" onclick="goFull('vid2')">📺 WATCH FULL SCREEN</button>
     </div>
+    
 
     <script>
-        // ল্যান্ডস্কেপ ফুলস্ক্রিন ফাংশন
-        function openLandscape(elementId) {
-            var elem = document.getElementById(elementId);
+        function goFull(id) {
+            let elem = document.getElementById(id);
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
             } else if (elem.webkitRequestFullscreen) {
                 elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
             }
-            
-            // অটো ল্যান্ডস্কেপ করার চেষ্টা (মোবাইলে)
+
+            // মোবাইলে ল্যান্ডস্কেপ মোড ফিক্স
             if (screen.orientation && screen.orientation.lock) {
-                screen.orientation.lock('landscape').catch(function(error) {
-                    console.log("Orientation lock failed: " + error);
-                });
+                screen.orientation.lock('landscape').catch(() => {});
             }
         }
 
-        // সিকিউরিটি ব্লার
+        // সিকিউরিটি ব্লার সেটিংস
         document.addEventListener("visibilitychange", () => {
-            document.body.classList.toggle("blur-content", document.hidden);
+            document.body.classList.toggle("blur-mode", document.hidden);
         });
     </script>
 </body>

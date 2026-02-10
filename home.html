@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Little Drop - Final Master Home</title>
+    <title>Family Storage</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -18,7 +18,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 0 40px 0; /* নিচে ডেভেলপার বারের জন্য জায়গা */
+            padding: 10px 0 50px 0;
             overflow-x: hidden;
         }
 
@@ -28,7 +28,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ২. থাম্বনেল স্লাইডার (16:9) */
+        /* ২. ইমেজ স্লাইডার ফিক্স (ছবি না কাটার জন্য) */
         .slider-wrapper {
             width: 92%;
             max-width: 500px;
@@ -38,6 +38,7 @@
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             border: 4px solid rgba(255,255,255,0.4);
+            background: rgba(0, 0, 0, 0.2); /* ছবির পেছনে হালকা ছায়া */
         }
 
         .slider-content {
@@ -47,13 +48,18 @@
             transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
         }
 
-        .slider-content img { width: 20%; height: 100%; object-fit: cover; }
+        .slider-content img { 
+            width: 20%; 
+            height: 100%; 
+            object-fit: contain; /* ছবি সম্পূর্ণ দেখানোর জন্য এটি ব্যবহার করা হয়েছে */
+            background: #000; /* যদি ছবি ছোট হয় তবে দুই পাশে কালো দেখাবে, কিন্তু কাটবে না */
+        }
 
         /* ৩. টেক্সট নোটিশ স্লাইডার (ছবির স্লাইডারের নিচে) */
         .notice-container {
             width: 92%;
             max-width: 500px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             color: #fff;
             padding: 8px 0;
             border-radius: 50px;
@@ -97,7 +103,7 @@
             transition: 0.3s;
         }
 
-        /* ৫. ডেভেলপার স্লাইডার (একদম নিচে স্থির) */
+        /* ৫. ডেভেলপার স্লাইডার (একদম নিচে) */
         .dev-container {
             width: 100%;
             background: #000;
@@ -113,7 +119,7 @@
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
-            animation: marquee 10s linear infinite;
+            animation: marquee 12s linear infinite;
             font-size: 12px;
             font-weight: bold;
         }
@@ -123,7 +129,7 @@
             100% { transform: translate(-100%, 0); }
         }
 
-        /* ৬. পাসওয়ার্ড প্রোটেকশন বক্স */
+        /* ৬. পাসওয়ার্ড প্রোটেকশন */
         .password-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
@@ -138,7 +144,7 @@
 
         .pass-box input {
             width: 100%; padding: 12px; border: 2px solid #ddd;
-            border-radius: 10px; margin: 15px 0; text-align: center; font-size: 20px; outline: none;
+            border-radius: 10px; margin: 15px 0; text-align: center; font-size: 20px;
         }
 
         .error-notif {
@@ -157,11 +163,9 @@
 
     <div class="slider-wrapper">
         <div class="slider-content" id="topSlider">
-            <img src="1770453126742.jpg" alt="1"><img src="pic1" alt="1">
-            <img src="family2.jpg" alt="3"><img src="pic2" alt="2">
-            <img src="family3.jpg" alt="3"><img src="pic3" alt="3">
-            <img src="family4.jpg" alt="3"><img src="pic4" alt="4">
-            <img src="family5.jpg" alt="3"><img src="pic5" alt="5">
+            <img src="1770453126742.jpg" alt="1"><img src="family2.jpg" alt="2">
+            <img src="family3.jpg" alt="3"><img src="family4.jpg" alt="4">
+            <img src="family5.jpg" alt="5">
         </div>
     </div>
 
@@ -173,39 +177,39 @@
 
     <div class="main-card">
         <div class="btn-list">
-            <button class="section-btn" onclick="askPass('page1.html', '1111')">Jasmine's wedding ceremony with Khorshed Alam</button>
-            <button class="section-btn" onclick="askPass('page2.html', '2222')">Adnan's childhood show</button>
-            <button class="section-btn" onclick="askPass('page3.html', '3333')">Chumki's wedding ceremony with Hossain Murad</button>
-            <button class="section-btn" onclick="askPass('page4.html', '4444')">Hossain's wedding ceremony with Nasrin Akhter Chumki</button>
-            <button class="section-btn" onclick="askPass('page5.html', '5555')">Lutfa's wedding ceremony with Imtiaz Tanvir</button>
+            <button class="section-btn" onclick="askPass('page1.html', '1122')">Jasmine's wedding ceremony with Khorshed Alam</button>
+            <button class="section-btn" onclick="askPass('page2.html', '3344')">Adnan's childhood show</button>
+            <button class="section-btn" onclick="askPass('page3.html', '5566')">Chumki's wedding ceremony with Hossain Murad</button>
+            <button class="section-btn" onclick="askPass('page4.html', '7788')">Hossain's wedding ceremony with Nasrin Akhter Chumki</button>
+            <button class="section-btn" onclick="askPass('page5.html', '9900')">Lutfa's wedding ceremony with Imtiaz Tanvir</button>
         </div>
     </div>
 
     <div class="slider-wrapper">
         <div class="slider-content" id="bottomSlider">
-            <img src="bot1.jpg" alt="1"><img src="bot2.jpg" alt="2">
-            <img src="bot3.jpg" alt="3"><img src="bot4.jpg" alt="4">
-            <img src="bot5.jpg" alt="5">
+            <img src="couple1.jpg" alt="1"><img src="couple2.jpg" alt="2">
+            <img src="couple3.jpg" alt="3"><img src="couple4.jpg" alt="4">
+            <img src="couple5.jpg" alt="5">
         </div>
     </div>
 
     <div class="dev-container">
         <div class="dev-text">
-            Developed By: Emon Kumar • Latest Update: Feb 2026 • Any Problem:- Contact Mehebub
+            Developed By: Emon Kumar • Status: Verified • Any Problem:- Contact Mehebub
         </div>
     </div>
 
     <div class="password-overlay" id="passOverlay">
         <div class="pass-box">
-            <h3 style="color:#3d348b">🔐 Enter Password</h3>
+            <h3>🔐 Enter Password</h3>
             <input type="password" id="passInput" placeholder="••••">
             <button class="section-btn" style="width: 100%;" onclick="checkPass()">SUBMIT</button>
-            <p style="margin-top:10px; color:red; cursor:pointer; font-weight:600;" onclick="closePass()">Cancel</p>
+            <p style="margin-top:10px; color:red; cursor:pointer;" onclick="closePass()">Cancel</p>
         </div>
     </div>
 
     <script>
-        // ইমেজ স্লাইডার লজিক (৪ সেকেন্ড পর পর)
+        // স্লাইডার কন্ট্রোল
         let currentIndex = 0;
         setInterval(() => {
             currentIndex = (currentIndex + 1) % 5;
@@ -214,7 +218,7 @@
             document.getElementById('bottomSlider').style.transform = `translateX(${offset}%)`;
         }, 4000);
 
-        // পাসওয়ার্ড এবং নেভিগেশন লজিক
+        // পাসওয়ার্ড সিস্টেম
         let targetPage = ""; let correctPass = "";
         function askPass(page, pass) {
             targetPage = page; correctPass = pass;

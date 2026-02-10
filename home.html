@@ -17,6 +17,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
             overflow-x: hidden;
         }
 
@@ -26,49 +28,46 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ১. উপরে স্ট্যাটাস বার */
-        .status-container {
-            width: 100%;
-            padding: 20px 10px;
+        /* স্লাইডার কন্টেইনার স্টাইল */
+        .slider-wrapper {
+            width: 90%;
+            max-width: 500px;
+            height: 130px; /* ল্যান্ডস্কেপ শেপ */
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .slider-content {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            overflow-x: auto;
-        }
-
-        .status-circle {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            border: 3px solid #ff4757;
-            padding: 2px;
-            background: white;
-            flex-shrink: 0;
-        }
-
-        .status-circle img {
-            width: 100%;
+            width: 500%; /* ৫টি ছবির জন্য */
             height: 100%;
-            border-radius: 50%;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .slider-content img {
+            width: 20%;
+            height: 100%;
             object-fit: cover;
         }
 
-        /* ২. মেইন কার্ড ডিজাইন */
+        /* মাঝখানের মেইন বাটন কার্ড */
         .main-card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(15px);
             width: 90%;
             max-width: 450px;
-            padding: 30px 20px;
+            padding: 25px 20px;
             border-radius: 30px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            margin: 20px 0;
         }
 
-        h1 { color: #2d3436; font-size: 22px; font-weight: 700; margin-bottom: 5px; }
-        .sub-text { color: #636e72; font-size: 13px; margin-bottom: 25px; }
+        h1 { color: #2d3436; font-size: 20px; font-weight: 700; margin-bottom: 5px; }
+        .sub-text { color: #636e72; font-size: 13px; margin-bottom: 20px; }
 
         .btn-list { display: flex; flex-direction: column; gap: 10px; }
 
@@ -82,47 +81,9 @@
             font-size: 14px;
             transition: 0.3s;
             display: block;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .section-btn:active { transform: scale(0.95); }
-
-        /* ৩. নিচে ছবির স্লাইডার */
-        .slider-container {
-            width: 100%;
-            max-width: 500px;
-            height: 180px;
-            margin-top: auto;
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-        }
-
-        .slider {
-            display: flex;
-            width: 500%; /* ৫টি ছবির জন্য */
-            height: 100%;
-            animation: slide 15s infinite;
-        }
-
-        .slider img {
-            width: 20%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes slide {
-            0% { margin-left: 0; }
-            20% { margin-left: 0; }
-            25% { margin-left: -100%; }
-            45% { margin-left: -100%; }
-            50% { margin-left: -200%; }
-            70% { margin-left: -200%; }
-            75% { margin-left: -300%; }
-            95% { margin-left: -300%; }
-            100% { margin-left: -400%; }
-        }
 
         /* সিকিউরিটি ব্লার */
         body.blur-content { filter: blur(30px); }
@@ -130,12 +91,14 @@
 </head>
 <body oncontextmenu="return false;">
 
-    <div class="status-container">
-        <div class="status-circle"><img src="img1.jpg" alt="1"></div>
-        <div class="status-circle"><img src="img2.jpg" alt="2"></div>
-        <div class="status-circle"><img src="img3.jpg" alt="3"></div>
-        <div class="status-circle"><img src="img4.jpg" alt="4"></div>
-        <div class="status-circle"><img src="img5.jpg" alt="5"></div>
+    <div class="slider-wrapper">
+        <div class="slider-content" id="topSlider">
+            <img src="top1.jpg" alt="Top 1">
+            <img src="top2.jpg" alt="Top 2">
+            <img src="top3.jpg" alt="Top 3">
+            <img src="top4.jpg" alt="Top 4">
+            <img src="top5.jpg" alt="Top 5">
+        </div>
     </div>
 
     <div class="main-card">
@@ -151,18 +114,36 @@
         </div>
     </div>
 
-    <div class="slider-container">
-        <div class="slider">
-            <img src="slide1.jpg" alt="Slide 1">
-            <img src="slide2.jpg" alt="Slide 2">
-            <img src="slide3.jpg" alt="Slide 3">
-            <img src="slide4.jpg" alt="Slide 4">
-            <img src="slide5.jpg" alt="Slide 5">
+    <div class="slider-wrapper">
+        <div class="slider-content" id="bottomSlider">
+            <img src="bot1.jpg" alt="Bottom 1">
+            <img src="bot2.jpg" alt="Bottom 2">
+            <img src="bot3.jpg" alt="Bottom 3">
+            <img src="bot4.jpg" alt="Bottom 4">
+            <img src="bot5.jpg" alt="Bottom 5">
         </div>
     </div>
 
     <script>
-        // অন্য ট্যাবে গেলে ব্লার হবে
+        // স্লাইডার এনিমেশন লজিক (৪ সেকেন্ড পর পর)
+        let currentIndex = 0;
+        const totalSlides = 5;
+        const topSlider = document.getElementById('topSlider');
+        const bottomSlider = document.getElementById('bottomSlider');
+
+        function startSliders() {
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                const offset = currentIndex * -20; // প্রতি ইমেজের জন্য ২০% অফসেট (১০০/৫)
+                
+                topSlider.style.transform = `translateX(${offset}%)`;
+                bottomSlider.style.transform = `translateX(${offset}%)`;
+            }, 4000); // ৪০০০ মিলি-সেকেন্ড = ৪ সেকেন্ড
+        }
+
+        window.onload = startSliders;
+
+        // সিকিউরিটি: অন্য ট্যাবে গেলে ব্লার হবে
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
                 document.body.classList.add("blur-content");
